@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>칸반 보드</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <h1 class="display-1">칸반 보드</h1>
+                <div class="user-info" id="user-info" style="display: none;">
+                    <span class="user-name" id="user-name"></span>
+                    <button id="logout-btn" class="btn-secondary">
+                        <span class="material-icons">logout</span>
+                        로그아웃
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <div class="add-card-section">
+            <input
+                type="text"
+                id="cardInput"
+                class="card-input"
+                placeholder="새 작업을 입력하세요..."
+                aria-label="새 작업 입력"
+            >
+            <button id="addCardBtn" class="btn-primary">
+                <span class="material-icons">add</span>
+                카드 추가
+            </button>
+        </div>
+
+        <div class="board">
+            <!-- To-do Column -->
+            <div class="column" data-column="todo">
+                <div class="column-header">
+                    <h2 class="heading">To-do</h2>
+                    <span class="card-count" id="todo-count">0</span>
+                </div>
+                <div class="cards-container" id="todo-cards" data-status="todo">
+                </div>
+            </div>
+
+            <!-- In-progress Column -->
+            <div class="column" data-column="in-progress">
+                <div class="column-header">
+                    <h2 class="heading">In-progress</h2>
+                    <span class="card-count" id="in-progress-count">0</span>
+                </div>
+                <div class="cards-container" id="in-progress-cards" data-status="in_progress">
+                </div>
+            </div>
+
+            <!-- Done Column -->
+            <div class="column" data-column="done">
+                <div class="column-header">
+                    <h2 class="heading">Done</h2>
+                    <span class="card-count" id="done-count">0</span>
+                </div>
+                <div class="cards-container" id="done-cards" data-status="done">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Supabase JS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <!-- Configuration -->
+    <script src="config.js"></script>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
