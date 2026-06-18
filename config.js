@@ -26,12 +26,29 @@ const OAUTH_PROVIDERS = {
 };
 
 // App Configuration
+// Helper function to get base path (works for both local and GitHub Pages)
+function getBasePath() {
+    const path = window.location.pathname;
+    // If on auth.html, get the directory
+    if (path.endsWith('auth.html')) {
+        return path.substring(0, path.lastIndexOf('/') + 1);
+    }
+    // If on index.html or root, get the directory
+    if (path.endsWith('index.html')) {
+        return path.substring(0, path.lastIndexOf('/') + 1);
+    }
+    // Default: use current path
+    return path.endsWith('/') ? path : path + '/';
+}
+
 const APP_CONFIG = {
     // Redirect URL after successful authentication
-    redirectTo: window.location.origin + '/index.html',
+    // Works for both local (http://localhost:8000/index.html)
+    // and GitHub Pages (https://sprits88-cloud.github.io/kanban/index.html)
+    redirectTo: window.location.origin + getBasePath() + 'index.html',
 
     // Email confirmation settings
-    emailRedirectTo: window.location.origin + '/auth.html',
+    emailRedirectTo: window.location.origin + getBasePath() + 'auth.html',
 
     // Session settings
     sessionPersistence: 'local', // 'local' or 'session'
